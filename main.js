@@ -1,5 +1,5 @@
 //java comment
-
+//TASK TWO
 async function fetchTickets() {
     const errorMessageDiv = document.getElementById('error-message');
     const ticketContainer = document.getElementById('ticket-container');
@@ -19,9 +19,24 @@ async function fetchTickets() {
         if (tickets.length === 0) { //checks if tickets are found if not throws a custom message
             throw new Error('No tickets found');
         }
+//TASK THREE
+ ticketContainer.innerHTML = '';
 
-     catch (error) {
-        errorMessageDiv.textContent = `Error: ${error.message}`;
-        errorMessageDiv.style.display = 'block';
-    }
+ tickets.forEach(ticket => {
+     const ticketDiv = document.createElement('div');
+     ticketDiv.className = 'ticket';
+     ticketDiv.innerHTML = `
+         <h3>Ticket ID: ${ticket.id}</h3>
+         <p><strong>Customer Name:</strong> User ${ticket.userId}</p>
+         <p><strong>Issue Description:</strong> ${ticket.title}</p>
+         <p><strong>Details:</strong> ${ticket.body}</p>
+     `;
+     ticketContainer.appendChild(ticketDiv);
+ });
+} catch (error) {
+ errorMessageDiv.textContent = `Error: ${error.message}`;
+ errorMessageDiv.style.display = 'block';
 }
+}
+
+fetchTickets(); //calls the funtion
