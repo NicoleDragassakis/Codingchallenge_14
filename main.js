@@ -36,6 +36,9 @@ async function fetchTickets() {
 } catch (error) {
  errorMessageDiv.textContent = `Error: ${error.message}`;
  errorMessageDiv.style.display = 'block';
+} //TASK FOUR 
+finally {
+    ticketContainer.style.display = 'block'; 
 }
 }
 
